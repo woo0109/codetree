@@ -1,11 +1,11 @@
 Y, M, D = map(int, input().split())
 
 def yoon(Y):
-    if Y % 4 == 0:
+    if Y % 400 == 0:
         return True
-    elif Y % 4 == 0 and Y % 100 == 0:
+    elif Y % 100 == 0:
         return False
-    elif Y % 4 == 0 and Y % 100 == 0 and Y % 400 == 0:
+    elif Y % 4 == 0:
         return True
     else:
         return False
@@ -23,7 +23,7 @@ def month(M):
 def day(Y, M):
     if M in (1,3,5,7,8,10,12):
         return 31
-    elif M in (4,6,8,11):
+    elif M in (4,6,9,11):
         return 30
     elif M == 2 and yoon(Y):
         return 29

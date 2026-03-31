@@ -1,0 +1,13 @@
+a, b = map(int, input().split())
+
+def mm(a, b):
+    if a > b:
+        a = a + 25
+        b = b * 2
+    else:
+        b = b + 25
+        a = a * 20
+    return a, b
+
+a, b = mm(a, b)
+print(a, b)

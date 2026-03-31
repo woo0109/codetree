@@ -1,38 +1,28 @@
+import sys
+
+sys.setrecursionlimit(200000)
+input = sys.stdin.readline
+
 n, m = map(int, input().split())
 
-parent = [i for i in range(n + 1)]
-num = n
+parent = list(range(n + 2))
+
+def find(x):
+    if parent[x] == x:
+        return x
+    parent[x] = find(parent[x]) 
+    return parent[x]
+
+current_count = n
 
 for _ in range(m):
     a, b = map(int, input().split())
     
-    if parent[a] != parent[b]:
-        for i in range(a, b+1):
-            parent[i] = parent[a]
+    curr = find(a)
+    while curr < b:
+        next_node = find(curr + 1)
+        parent[curr] = next_node
+        current_count -= 1
+        curr = next_node 
     
-    ps = set(parent)
-    print(len(ps)-1)
-    print(parent)
-
-# def find(x):
-#     if parent[x] == x:
-#         return x
-#     parent[x] = find(parent[x]) 
-#     return parent[x]
-
-# def union(a, b):
-#     root_a = find(a)
-#     root_b = find(b)
-#     if root_a != root_b:
-#         parent[root_b] = root_a
-#         return True 
-#     return False 
-
-# for _ in range(m):
-#     a, b = map(int, input().split())
-    
-#     for i in range(a, b):
-#         union(i, i + 1)
-
-#     ps = set(parent)
-#     print(len(ps)-1)
+    print(current_count)

@@ -6,7 +6,7 @@ def mm(a, b):
         b = b * 2
     else:
         b = b + 25
-        a = a * 20
+        a = a * 2
     return a, b
 
 a, b = mm(a, b)
